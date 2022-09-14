@@ -57,10 +57,12 @@ void Zadacha50()
             Console.WriteLine("введите номер столбца");
             int m = Convert.ToInt32(Console.ReadLine());
             int [,] numbers = new int [10,10];
+
             System.Console.WriteLine($"Массив {String.Join(", ", numbers)}");
 
             FillArrayRandomNumbers(numbers);
-            
+            PrintArray(numbers);
+
             if (n > numbers.GetLength(0) || m > numbers.GetLength(1))
             {
                 Console.WriteLine("такого элемента нет");
@@ -79,7 +81,6 @@ void Zadacha50()
                             array [i,j] = new Random().Next(-100, 100)/10;
                         }   
                 }
-            
             }
 }
 void Zadacha47()
@@ -131,10 +132,9 @@ void Zadacha52()
     int m = Convert.ToInt32(Console.ReadLine());
 
     int[,] numbers = new int[n, m];
-    Console.WriteLine($"Массив {String.Join(", ", numbers)}");
 
     FillArrayRandomNumbers(numbers);
-
+    PrintArray(numbers);
 
     for (int j = 0; j < numbers.GetLength(1); j++)
     {
@@ -157,5 +157,16 @@ void Zadacha52()
                 array[i, j] = new Random().Next(0, 10);
             }
         }
+    }
+}
+void PrintArray(int[,] inArray)
+{
+    for (int i = 0; i < inArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < inArray.GetLength(1); j++)
+        {
+            Console.Write($"{inArray[i, j]} ");
+        }
+        Console.WriteLine();
     }
 }
