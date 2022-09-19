@@ -10,7 +10,8 @@ void Start()
         System.Console.WriteLine("54) Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.");
         System.Console.WriteLine("56) Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.");
         System.Console.WriteLine("58) Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.");
-        System.Console.WriteLine("60) Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.Массив размером 2x2x2");
+        System.Console.WriteLine("60) Задача 60: Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.Массив размером 2x2x2");
+        System.Console.WriteLine("62) Задача 62: Напишите программу, которая заполнит спирально массив 4X4.");
         System.Console.WriteLine("0) End");
 
         int numTask = SetNumber("task");
@@ -33,6 +34,10 @@ void Start()
             case 60:
             Zadacha60();
             break;
+
+            case 62:
+            Zadacha62();
+            break;      
 
             default: System.Console.WriteLine("error"); break;
         }
@@ -157,6 +162,41 @@ void Zadacha60()
     int[,,] array3D = new int[x, y, z];
     CreateArray(array3D);
     WriteArray(array3D);
+}
+void Zadacha62()
+{
+    int n = 4;
+    int[,] sqareArray = new int[n, n];
+
+    int temp = 1;
+    int i = 0;
+    int j = 0;
+
+    while (temp <= sqareArray.GetLength(0) * sqareArray.GetLength(1))
+    {
+        sqareArray[i, j] = temp;
+        temp++;
+    if (i <= j + 1 && i + j < sqareArray.GetLength(1) - 1)
+        j++;
+    else if (i < j && i + j >= sqareArray.GetLength(0) - 1)
+        i++;
+    else if (i >= j && i + j > sqareArray.GetLength(1) - 1)
+        j--;
+    else
+        i--;
+    }
+
+    for (int k = 0; k < sqareArray.GetLength(0); k++)
+  {
+    for (int l = 0; l < sqareArray.GetLength(1); l++)
+    {
+      if (sqareArray[k,l] / 10 <= 0)
+      Console.Write($" {sqareArray[k,l]} ");
+
+      else Console.Write($"{sqareArray[k,l]} ");
+    }
+    Console.WriteLine();
+  }
 }
 void PrintArray(int[,] inArray)
 {   
